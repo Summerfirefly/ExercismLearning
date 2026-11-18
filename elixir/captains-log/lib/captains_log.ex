@@ -2,8 +2,7 @@ defmodule CaptainsLog do
   @planetary_classes ["D", "H", "J", "K", "L", "M", "N", "R", "T", "Y"]
 
   def random_planet_class() do
-    rand_index = :rand.uniform(length(@planetary_classes))
-    :lists.nth(rand_index, @planetary_classes)
+    Enum.random(@planetary_classes)
   end
 
   def random_ship_registry_number() do

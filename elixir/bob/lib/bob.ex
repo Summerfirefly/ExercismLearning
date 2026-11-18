@@ -2,7 +2,7 @@ defmodule Bob do
   @spec hey(String.t()) :: String.t()
   def hey(input) do
     question? = input |> String.trim() |> String.ends_with?("?")
-    shout? = input |> String.trim() |> is_shout?()
+    shout? = input |> String.trim() |> shout?()
     silent? = input |> String.trim() |> String.length() == 0
     cond do
       silent? -> "Fine. Be that way!"
@@ -12,7 +12,7 @@ defmodule Bob do
     end
   end
 
-  defp is_shout?(input) do
+  defp shout?(input) do
     not (input =~ ~r/\p{Ll}/u) and (input =~ ~r/\p{Lu}/u)
   end
 end

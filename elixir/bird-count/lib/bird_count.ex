@@ -1,7 +1,7 @@
 defmodule BirdCount do
   def today([]), do: nil
   def today(list) do
-    [first | remain] = list
+    [first | _] = list
     first
   end
 

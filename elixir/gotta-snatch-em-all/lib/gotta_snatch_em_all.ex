@@ -30,9 +30,8 @@ defmodule GottaSnatchEmAll do
   @spec extra_cards(collection(), collection()) :: non_neg_integer()
   def extra_cards(your_collection, their_collection) do
     your_collection
-    |> MapSet.reject(&(MapSet.member?(their_collection, &1)))
-    |> MapSet.to_list()
-    |> length()
+    |> MapSet.difference(their_collection)
+    |> MapSet.size()
   end
 
   @spec boring_cards([collection()]) :: [card()]
@@ -49,14 +48,13 @@ defmodule GottaSnatchEmAll do
   def total_cards(collections) do
     collections
     |> Enum.reduce(MapSet.new([]), &(MapSet.union(&1, &2)))
-    |> MapSet.to_list()
-    |> length()
+    |> MapSet.size()
   end
 
   @spec split_shiny_cards(collection()) :: {[card()], [card()]}
   def split_shiny_cards(collection) do
     {shiny_cards, normal_cards} = collection
       |> MapSet.split_with(&(&1 =~ ~r/^Shiny/))
-    {MapSet.to_list(shiny_cards), MapSet.to_list(normal_cards)}
+    {Enum.sort(MapSet.to_list(shiny_cards)), Enum.sort(MapSet.to_list(normal_cards))}
   end
 end

@@ -11,7 +11,7 @@ defmodule MatchingBrackets do
            ch when ch == ?{ or ch == ?[ or ch == ?( -> {:cont, [c | s]}
            ch when ch == ?} or ch == ?] or ch == ?) ->
              if pair?(c, s) do
-               [h | t] = s
+               [_h | t] = s
                {:cont, t}
              else
                {:halt, [c | s]}
@@ -23,7 +23,7 @@ defmodule MatchingBrackets do
   end
 
   defp pair?(_char, []), do: false
-  defp pair?(char, [h | t]) do
+  defp pair?(char, [h | _t]) do
     case char do
       ?} -> h == ?{
       ?] -> h == ?[

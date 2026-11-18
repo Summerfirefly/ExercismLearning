@@ -6,8 +6,7 @@ defmodule CaptainsLog do
   end
 
   def random_ship_registry_number() do
-    rand_num = :rand.uniform(9000) + 999
-    "NCC-#{rand_num}"
+    "NCC-#{Enum.random(1000..9999)}"
   end
 
   def random_stardate() do

@@ -17,7 +17,10 @@ defmodule RPNCalculator.Exception do
     end
   end
 
-  def divide(stack) when length(stack) < 2, do: raise StackUnderflowError, "when dividing"
+  def divide(stack) when length(stack) < 2 do
+    raise StackUnderflowError, "when dividing"
+  end
+
   def divide([first | [second | _]]) do
     if first == 0 do
       raise DivisionByZeroError

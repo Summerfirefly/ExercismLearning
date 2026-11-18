@@ -4,7 +4,7 @@ defmodule BasketballWebsite do
   end
   
   defp do_extract_from_path(nil, _path), do: nil
-  defp do_extract_from_path(data, []), do: nil
+  defp do_extract_from_path(_data, []), do: nil
   defp do_extract_from_path(data, [first | remain]) do
     case remain do
       [] -> data[first]

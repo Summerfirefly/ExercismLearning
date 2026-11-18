@@ -21,13 +21,13 @@ defmodule Strain do
     do_discard(list, fun, [])
   end
 
-  def do_keep([], _fun, result), do: result
-  def do_keep([first | rest], fun, result) do
+  defp do_keep([], _fun, result), do: result
+  defp do_keep([first | rest], fun, result) do
     if fun.(first), do: do_keep(rest, fun, result ++ [first]), else: do_keep(rest, fun, result)
   end
 
-  def do_discard([], _fun, result), do: result
-  def do_discard([first | rest], fun, result) do
+  defp do_discard([], _fun, result), do: result
+  defp do_discard([first | rest], fun, result) do
     if fun.(first), do: do_discard(rest, fun, result), else: do_discard(rest, fun, result ++ [first])
   end
 end

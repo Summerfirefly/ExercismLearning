@@ -26,8 +26,8 @@ defmodule BinarySearch do
     |> bisearch(key, 0)
   end
 
-  def bisearch([], _, _), do: :not_found
-  def bisearch(numbers, key, offset) do
+  defp bisearch([], _, _), do: :not_found
+  defp bisearch(numbers, key, offset) do
     mid_index = div(length(numbers), 2)
     mid = Enum.at(numbers, mid_index)
     cond do

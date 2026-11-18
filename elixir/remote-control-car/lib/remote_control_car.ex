@@ -6,15 +6,7 @@ defmodule RemoteControlCar do
     :nickname
   ]
 
-  def new() do
-    %RemoteControlCar{
-      battery_percentage: 100,
-      distance_driven_in_meters: 0,
-      nickname: "none"
-    }
-  end
-
-  def new(nickname) do
+  def new(nickname \\ "none") do
     %RemoteControlCar{
       battery_percentage: 100,
       distance_driven_in_meters: 0,

@@ -1,6 +1,4 @@
 defmodule NucleotideCount do
-  @_nucleotides [?A, ?C, ?G, ?T]
-
   @doc """
   Counts individual nucleotides in a DNA strand.
 

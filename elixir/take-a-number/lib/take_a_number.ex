@@ -1,9 +1,9 @@
 defmodule TakeANumber do
   def start() do
-    spawn(TakeANumber, :task_loop, [0])
+    spawn(fn -> task_loop(0) end)
   end
 
-  def task_loop(last_num) do
+  defp task_loop(last_num) do
     receive do
       {:report_state, sender_pid} ->
         send(sender_pid, last_num)

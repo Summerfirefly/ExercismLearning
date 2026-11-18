@@ -4,23 +4,23 @@ defmodule KitchenCalculator do
     volume
   end
 
-  def to_milliliter(volume_pair = {:milliliter, v}) do
+  def to_milliliter(_volume_pair = {:milliliter, v}) do
     {:milliliter, v}
   end
 
-  def to_milliliter(volume_pair = {:cup, v}) do
+  def to_milliliter(_volume_pair = {:cup, v}) do
     {:milliliter, v * 240}
   end
 
-  def to_milliliter(volume_pair = {:fluid_ounce, v}) do
+  def to_milliliter(_volume_pair = {:fluid_ounce, v}) do
     {:milliliter, v * 30}
   end
 
-  def to_milliliter(volume_pair = {:teaspoon, v}) do
+  def to_milliliter(_volume_pair = {:teaspoon, v}) do
     {:milliliter, v * 5}
   end
 
-  def to_milliliter(volume_pair = {:tablespoon, v}) do
+  def to_milliliter(_volume_pair = {:tablespoon, v}) do
     {:milliliter, v * 15}
   end
 

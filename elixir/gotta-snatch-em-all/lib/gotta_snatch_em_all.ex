@@ -54,7 +54,7 @@ defmodule GottaSnatchEmAll do
   @spec split_shiny_cards(collection()) :: {[card()], [card()]}
   def split_shiny_cards(collection) do
     {shiny_cards, normal_cards} = collection
-      |> MapSet.split_with(&(&1 =~ ~r/^Shiny/))
+      |> MapSet.split_with(&(String.starts_with?(&1, "Shiny")))
     {Enum.sort(MapSet.to_list(shiny_cards)), Enum.sort(MapSet.to_list(normal_cards))}
   end
 end

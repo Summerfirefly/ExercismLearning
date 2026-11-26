@@ -1,0 +1,109 @@
+# 遗嘱
+
+欢迎来到 Exercism Ruby 轨道中的 遗嘱。
+如果你在运行测试或提交代码时需要帮助，请查看`HELP.md`。
+如果你在练习中卡住了，请查看`HINTS.md`，不过先试着自己解决，不要急着看提示 :)
+
+## Introduction
+
+## 命名空间
+
+代码组织的一个重要方法是使用命名空间。类和模块都可以提供命名空间。两个方法可能会发生命名冲突，这时可以把它们放进不同的命名空间来解决。命名空间可以嵌套，这有助于组织大型代码库。访问命名空间要用作用域解析运算符 `::`。
+
+下面这个例子展示了两个不同的 `foo` 方法。在它们前面分别加上所属的命名空间，就能一起使用。
+
+```ruby
+class MyNamespace
+  def self.foo
+    44
+  end
+
+  class MyInnerNamespace
+    def self.baz
+      90
+    end
+  end
+end
+
+class MyOtherNamespace
+  def self.foo
+    -2
+  end
+end
+
+p MyNamespace::foo + MyOtherNamespace::foo * MyNamespace::MyInnerNamespace::baz  # => -136
+```
+
+注意，命名空间的解析取决于正在执行的代码所处的位置。要引用*根*命名空间里的内容（也就是在所有已定义的命名空间之外），就要以 `::` 开头。
+
+例如：
+
+```ruby
+class Example
+  def self.example
+    5
+  end
+end
+
+class MyNamespace
+
+  class Example
+    def self.example
+      10
+    end
+  end
+
+  def self.call_example
+    p Example::example  # => 10
+    p ::Example::example  # => 5
+  end
+end
+```
+
+## Instructions
+
+你在一家知名的律师事务所工作，专门处理各种独特的遗嘱委托。
+
+在这个练习中，你将打开一座神秘的金库。
+你是遗产的执行人，需要汇集三个家族长期保守的秘密密码，从而得到一个账号和与之匹配的密码。
+
+为了防止任何一个家族单独打开金库，只有把他们的信息与你从遗嘱中得知的秘密修正符结合起来，才能打开它。
+
+你有三个任务，都与帮助这些家族打开金库有关。
+
+## 1. 在家族面前就座，并摊开你的文件
+
+定义一个名为`EstateExecutor`的命名空间。
+后续任务中的代码都应定义在`EstateExecutor`命名空间的内部。
+
+```ruby
+class SomeName
+  # The space between the class/module name
+  # and the `end` keyword
+  # is called body of the  namespace.
+end
+```
+
+## 2. 找出秘密账号
+
+这是你的重要时刻。
+只有你掌握着那把秘密修正符密钥，能够揭示出秘密账号。
+
+定义`assemble_account_number(secret_modifier)`方法，它接收`Integer`类型的秘密修正符作为实参，并返回组装好的`Integer`账号。
+
+要得到正确的数字，你需要把三个家族各自的`bank_number_part`相加。
+
+## 3. 最后一步：输入密码
+
+遗嘱中的说明要求你先加总所有蓝色碎片，再加总所有红色碎片。
+得到的密码由这两个和相乘得出。
+
+定义`assemble_code`方法，它把三个家族的碎片组合成一个`Integer`结果，并返回所得的密码。
+该方法没有任何实参，只依赖各家族相关命名空间中的信息。
+
+## Source
+
+### Created by
+
+- @vaeng
+- @vaiapatta1985
